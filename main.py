@@ -179,7 +179,6 @@ if __name__ == "__main__":
         perevirka(x_matrix, y_avr, B)
         new_B, d = kriteriy_studenta(x_matrix_norm, y, y_avr, n, m, B)
         new_y_pract = get_new_y(x_matrix, new_B)
-        print(new_y_pract, y_avr)
         adekvat, odnorid = kriteriy_fishera(m, n, 4, new_y_pract, y_avr, y)
 
 
