@@ -169,16 +169,21 @@ if __name__ == "__main__":
     adekvat = False
     n = 15
     m = 3
+    #поки не адекватно починаемо знову
     while not adekvat:
+        #поки не однорідно починаемо знову
         while not odnorid:
             x_matrix_norm, x_matrix, y, y_avr = create_plan_matrix(n, m)
+            #однорідність перевіряется за критеріем кохрена
             odnorid = cohren_crit(y, n, m)
+            # якщо не однорідне збільшуемо m і почиаемо знову
             if odnorid == False:
                 m+=1
         B = find_coefs(x_matrix,    y_avr)
         perevirka(x_matrix, y_avr, B)
         new_B, d = kriteriy_studenta(x_matrix_norm, y, y_avr, n, m, B)
         new_y_pract = get_new_y(x_matrix, new_B)
+        # адекватність перевіряемо за критеріем фішера. приймае значення True або False
         adekvat, odnorid = kriteriy_fishera(m, n, 4, new_y_pract, y_avr, y)
 
 
